@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Pascal DeSouza - Data Analyst and Web Developer">
+    <title>Contact - Pascal DeSouza</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+        :root {
+            --primary: #020b1b;
+            --secondary: #081228;
+            --accent: #1fe1ff;
+            --accent2: #7b6cff;
+            --text-primary: #c3f7ff;
+            --text-secondary: #f8fbff;
+            --text-muted: #9bb7d8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none !important;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--text-secondary);
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        .heading-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(233, 69, 96, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(233, 69, 96, 0.4);
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .form-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 16px;
+            color: var(--text-secondary);
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 0 3px rgba(31, 225, 255, 0.12);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--text-secondary);
+            font-size: 24px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px);
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+            box-shadow: 0 10px 25px rgba(31, 225, 255, 0.22);
+        }
+
+        .success-message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+            z-index: 1000;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+        }
+
+        .success-message.show {
+            transform: translateX(0);
+        }
+        #customCursor {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 44px;
+            height: 44px;
+            border: 2px solid rgba(31, 225, 255, 0.9);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: transform 0.12s ease-out, opacity 0.12s ease-out;
+            z-index: 99999;
+            background: rgba(255, 255, 255, 0.04);
+            box-shadow: 0 0 0 1px rgba(31, 225, 255, 0.15);
+        }
+
+        #customCursor::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 1px solid rgba(31, 225, 255, 0.3);
+        }
+
+        #customCursor::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 16px rgba(31, 225, 255, 0.7);
+        }
+
+        #customCursor.active {
+            transform: translate(-50%, -50%) scale(0.82);
+            opacity: 0.9;
+        }
+    </style>
+    <link rel="stylesheet" href="portfolio-premium.css">
+</head>
+<body>
+    <div id="customCursor"></div>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-card border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold heading-font gradient-text">
+                    PD
+                </div>
+
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link text-white/80 hover:text-white font-medium">Home</a>
+                    <a href="about.html" class="nav-link text-white/80 hover:text-white font-medium">About</a>
+                    <a href="projects.html" class="nav-link text-white/80 hover:text-white font-medium">Projects</a>
+                    <a href="contact.html" class="nav-link text-white font-medium">Contact</a>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <button onclick="downloadCV()" class="btn-primary hidden sm:flex items-center space-x-2">
+                        <i class="fas fa-download"></i>
+                        <span>Download CV</span>
+                    </button>
+
+                    <button onclick="toggleMobileMenu()" class="md:hidden text-white text-2xl">
+                        <i id="hamburger" class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden mt-4 pb-4 border-t border-white/10 pt-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="index.html" onclick="toggleMobileMenu()" class="text-white/80 hover:text-white font-medium">Home</a>
+                    <a href="about.html" onclick="toggleMobileMenu()" class="text-white/80 hover:text-white font-medium">About</a>
+                    <a href="projects.html" onclick="toggleMobileMenu()" class="text-white/80 hover:text-white font-medium">Projects</a>
+                    <a href="contact.html" onclick="toggleMobileMenu()" class="text-white font-medium">Contact</a>
+                    <button onclick="downloadCV()" class="btn-primary w-full flex items-center justify-center space-x-2">
+                        <i class="fas fa-download"></i>
+                        <span>Download CV</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <section class="pt-24 pb-16">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h1 class="text-4xl md:text-6xl font-bold heading-font mb-6">
+                    Let's <span class="gradient-text">Connect</span>
+                </h1>
+                <p class="text-xl text-white/70 max-w-3xl mx-auto">
+                    I'm always interested in new opportunities and exciting projects.
+                    Let's discuss how we can work together to bring your ideas to life.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="glass-card p-8">
+                    <h2 class="text-2xl font-bold heading-font mb-6">Send me a message</h2>
+
+                    <form id="contactForm" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-white/80 mb-2">Name</label>
+                                <input type="text" name="name" required class="form-input" placeholder="Your name">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-white/80 mb-2">Email</label>
+                                <input type="email" name="email" required class="form-input" placeholder="your@email.com">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-white/80 mb-2">Subject</label>
+                            <input type="text" name="subject" required class="form-input" placeholder="What's this about?">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-white/80 mb-2">Message</label>
+                            <textarea name="message" required class="form-input form-textarea" placeholder="Tell me about your project or idea..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-primary w-full flex items-center justify-center space-x-2">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>Send Message</span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="space-y-8">
+                    <div class="glass-card p-8">
+                        <h2 class="text-2xl font-bold heading-font mb-6">Get in touch</h2>
+
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-pink-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-envelope text-pink-400"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-white mb-1">Email</h3>
+                                    <p class="text-white/70">desouza.epa@gmail.com</p>
+                                    <p class="text-white/50 text-sm">I'll respond within 24 hours</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-map-marker-alt text-blue-400"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-white mb-1">Location</h3>
+                                    <p class="text-white/70">Kumasi, Ghana</p>
+                                    <p class="text-white/50 text-sm">Available for remote work</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-clock text-green-400"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-white mb-1">Response Time</h3>
+                                    <p class="text-white/70">Within 24 hours</p>
+                                    <p class="text-white/50 text-sm">Usually much faster!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="glass-card p-8">
+                        <h2 class="text-2xl font-bold heading-font mb-6">Follow me</h2>
+                        <p class="text-white/70 mb-6">Connect with me on social media or check out my work on these platforms.</p>
+
+                        <div class="flex flex-wrap gap-4">
+                            <a href="https://linkedin.com/in/pascal-desouza" class="social-link" title="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://github.com/Pascaldesouza" class="social-link" title="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://x.com/whyte_vyrux" class="social-link" title="Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="https://www.instagram.com/de_souza_002?igsh=NHlxNzk4NzY5ajV6&utm_source=qr" class="social-link" title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Availability Status -->
+                    <div class="contact-card">
+                        <div class="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-circle text-green-400 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold heading-font mb-2">Available for work</h3>
+                        <p class="text-white/70">
+                            I'm currently available for freelance projects and full-time opportunities.
+                            Let's discuss how we can collaborate!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Message -->
+    <div id="successMessage" class="success-message">
+        <div class="flex items-center space-x-3">
+            <i class="fas fa-check-circle text-xl"></i>
+            <div>
+                <div class="font-semibold">Message sent successfully!</div>
+                <div class="text-sm opacity-90">I'll get back to you soon.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center text-white/60">
+                <p>&copy; <span id="currentYear"></span> Pascal DeSouza. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const hamburger = document.getElementById('hamburger');
+            menu.classList.toggle('hidden');
+            hamburger.classList.toggle('fa-bars');
+            hamburger.classList.toggle('fa-x');
+        }
+
+        // CV download
+        function downloadCV() {
+            const link = document.createElement('a');
+            link.href = 'DeSouza Pascal.pdf';
+            link.download = 'Pascal-DeSouza-CV.pdf';
+            link.click();
+
+            const notification = document.createElement('div');
+            notification.innerHTML = `
+                <div class="fixed top-4 right-4 glass-card p-4 rounded-lg z-50 animate-bounce">
+                    <div class="flex items-center space-x-2 text-green-400">
+                        <i class="fas fa-check-circle"></i>
+                        <span>CV Downloaded Successfully!</span>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(notification);
+            setTimeout(() => notification.remove(), 3000);
+        }
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+
+            // Simulate form submission (replace with actual form handling)
+            console.log('Form submitted:', data);
+
+            // Show success message
+            const successMessage = document.getElementById('successMessage');
+            successMessage.classList.add('show');
+
+            // Reset form
+            this.reset();
+
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                successMessage.classList.remove('show');
+            }, 5000);
+
+            // Here you would typically send the data to your backend
+            // Example: fetch('/api/contact', { method: 'POST', body: JSON.stringify(data) })
+        });
+
+        // Initialize
+        window.addEventListener('load', () => {
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            console.log('🚀 Contact page loaded successfully!');
+        });
+
+        const customCursor = document.getElementById('customCursor');
+        window.addEventListener('mousemove', (event) => {
+            customCursor.style.left = `${event.clientX}px`;
+            customCursor.style.top = `${event.clientY}px`;
+        });
+        window.addEventListener('mousedown', () => {
+            customCursor.classList.add('active');
+        });
+        window.addEventListener('mouseup', () => {
+            customCursor.classList.remove('active');
+        });
+        window.addEventListener('mouseleave', () => {
+            customCursor.style.opacity = '0';
+        });
+        window.addEventListener('mouseenter', () => {
+            customCursor.style.opacity = '1';
+        });
+    </script>
+    <script src="portfolio-motion.js"></script>
+</body>
+</html>

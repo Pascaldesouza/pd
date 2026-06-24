@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About Pascal DeSouza - Data Analyst and Web Developer">
+    <title>About - Pascal DeSouza</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+        :root {
+            --primary: #020b1b;
+            --secondary: #081228;
+            --accent: #1fe1ff;
+            --accent2: #7b6cff;
+            --text-primary: #c3f7ff;
+            --text-secondary: #f8fbff;
+            --text-muted: #9bb7d8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none !important;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--text-secondary);
+            overflow-x: hidden;
+        }
+
+        .heading-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .text-accent {
+            color: var(--accent);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(233, 69, 96, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(233, 69, 96, 0.4);
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 40px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+            border: 3px solid var(--secondary);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 12px;
+            width: 2px;
+            height: calc(100% + 28px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .timeline-item:last-child::after {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-item {
+                padding-left: 20px;
+            }
+
+            .timeline-item::before {
+                width: 8px;
+                height: 8px;
+                left: -2px;
+            }
+        }
+        #customCursor {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 44px;
+            height: 44px;
+            border: 2px solid rgba(31, 225, 255, 0.95);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: transform 0.12s ease-out, opacity 0.12s ease-out;
+            z-index: 99999;
+            background: rgba(255, 255, 255, 0.04);
+            box-shadow: 0 0 0 1px rgba(31, 225, 255, 0.18);
+        }
+
+        #customCursor::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 1px solid rgba(31, 225, 255, 0.3);
+        }
+
+        #customCursor::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 16px rgba(31, 225, 255, 0.7);
+        }
+
+        #customCursor.active {
+            transform: translate(-50%, -50%) scale(0.82);
+            opacity: 0.9;
+        }
+    </style>
+    <link rel="stylesheet" href="portfolio-premium.css">
+</head>
+<body>
+    <div id="customCursor"></div>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-card border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold heading-font gradient-text">
+                    PD
+                </div>
+
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link text-white/80 hover:text-white font-medium">Home</a>
+                    <a href="about.html" class="nav-link text-white font-medium">About</a>
+                    <a href="projects.html" class="nav-link text-white/80 hover:text-white font-medium">Projects</a>
+                    <a href="contact.html" class="nav-link text-white/80 hover:text-white font-medium">Contact</a>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <button onclick="downloadCV()" class="btn-primary hidden sm:flex items-center space-x-2">
+                        <i class="fas fa-download"></i>
+                        <span>Download CV</span>
+                    </button>
+
+                    <button onclick="toggleMobileMenu()" class="md:hidden text-white text-2xl">
+                        <i id="hamburger" class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden mt-4 pb-4 border-t border-white/10 pt-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="index.html" onclick="toggleMobileMenu()" class="text-white/80 hover:text-white font-medium">Home</a>
+                    <a href="about.html" onclick="toggleMobileMenu()" class="text-white font-medium">About</a>
+                    <a href="projects.html" onclick="toggleMobileMenu()" class="text-white/80 hover:text-white font-medium">Projects</a>
+                    <a href="contact.html" onclick="toggleMobileMenu()" class="text-white/80 hover:text-white font-medium">Contact</a>
+                    <button onclick="downloadCV()" class="btn-primary w-full flex items-center justify-center space-x-2">
+                        <i class="fas fa-download"></i>
+                        <span>Download CV</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-16">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h1 class="text-4xl md:text-6xl font-bold heading-font mb-6">
+                    About <span class="gradient-text">Me</span>
+                </h1>
+                <p class="text-xl text-white/70 max-w-3xl mx-auto">
+                    Passionate about turning data into insights and building solutions that make a difference.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+                <!-- Profile Image -->
+                <div class="text-center">
+                    <div class="relative inline-block">
+                        <div class="w-80 h-80 mx-auto rounded-full bg-gradient-to-br from-pink-500 to-purple-600 p-1 overflow-hidden">
+                            <img src="blog-image.jpg" alt="Pascal DeSouza" class="w-full h-full object-cover rounded-full" />
+                        </div>
+                        <div class="absolute -bottom-4 -right-4 glass-card p-4 rounded-full">
+                            <i class="fas fa-code text-2xl gradient-text"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bio -->
+                <div class="space-y-6">
+                    <h2 class="text-3xl font-bold heading-font">Hi, I'm Pascal DeSouza</h2>
+                    <p class="text-white/80 leading-relaxed">
+                        I'm a dedicated Data Analyst with over 5 years of experience in transforming complex datasets
+                        into actionable business insights. My expertise spans financial data reconciliation, web development,
+                        and operational analytics across fintech, research, and business operations.
+                    </p>
+                    <p class="text-white/80 leading-relaxed">
+                        When I'm not analyzing data or building web applications, you'll find me exploring new
+                        technologies and mentoring the next generation of data professionals. I believe in the power
+                        of data-driven decision making and creating efficient, scalable solutions.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <div class="glass-card px-4 py-2">
+                            <i class="fas fa-map-marker-alt text-accent mr-2"></i>
+                            <span class="text-sm">Based in Ghana</span>
+                        </div>
+                        <div class="glass-card px-4 py-2">
+                            <i class="fas fa-graduation-cap text-accent mr-2"></i>
+                            <span class="text-sm">Data Analytics Graduate</span>
+                        </div>
+                        <div class="glass-card px-4 py-2">
+                            <i class="fas fa-language text-accent mr-2"></i>
+                            <span class="text-sm">English, French</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills Section -->
+            <div class="mb-20">
+                <h2 class="text-3xl font-bold heading-font text-center mb-12">Skills & Expertise</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="skill-card">
+                        <i class="fas fa-chart-bar text-3xl text-blue-400 mb-4"></i>
+                        <h3 class="font-semibold mb-2">Data Analysis</h3>
+                        <p class="text-sm text-white/60">Python, Excel, SQL, Tableau</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-code text-3xl text-green-400 mb-4"></i>
+                        <h3 class="font-semibold mb-2">Programming</h3>
+                        <p class="text-sm text-white/60">Python, JavaScript, HTML/CSS</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-database text-3xl text-purple-400 mb-4"></i>
+                        <h3 class="font-semibold mb-2">Databases</h3>
+                        <p class="text-sm text-white/60">MySQL, PostgreSQL, MongoDB</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-robot text-3xl text-pink-400 mb-4"></i>
+                        <h3 class="font-semibold mb-2">Automation</h3>
+                        <p class="text-sm text-white/60">ETL, Scripting, APIs</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experience Timeline -->
+            <div>
+                <h2 class="text-3xl font-bold heading-font text-center mb-12">Professional Experience</h2>
+                <div class="max-w-4xl mx-auto">
+                    <div class="timeline-item">
+                        <div class="glass-card p-6">
+                            <h3 class="text-xl font-bold heading-font mb-2">🔹 Research/Data Analyst — BSystems Limited</h3>
+                            <p class="text-accent font-medium mb-2">Jan 2026 – Present • Accra, Ghana</p>
+                            <p class="text-white/80 mb-4">
+                                <strong>Role Overview:</strong> Responsible for designing and implementing end-to-end financial data reconciliation systems, performing risk analytics, and generating operational insights across fintech transaction pipelines.
+                            </p>
+                            <div class="mb-4">
+                                <strong>Core Responsibilities:</strong>
+                                <ul class="list-disc list-inside text-white/80 space-y-1 mt-2">
+                                    <li>Designed and automated merchant reconciliation systems covering failed transaction deductions, auto-reversal and manual reversal flows, monthly reconciliation positions across multiple accounts</li>
+                                    <li>Built data pipelines using Python and Excel to extract transaction data from multiple sources, clean, normalize, and validate datasets, perform cross-system reconciliation</li>
+                                    <li>Conducted data matching and anomaly detection to identify discrepancies between transaction logs and settlement records, flag over-reversals, duplicate credits, and missing transactions</li>
+                                    <li>Performed financial risk analysis on Direct Credits, Payouts, Send Money transactions, Merchant settlements</li>
+                                    <li>Generated risk reports and balance snapshots to support fraud detection, operational monitoring, decision-making processes</li>
+                                    <li>Improved reporting efficiency by reducing manual reconciliation workload through automation</li>
+                                </ul>
+                            </div>
+                            <p class="text-white/60 text-sm">
+                                <strong>Tools & Technologies:</strong> Python (Pandas, NumPy), Excel (Advanced formulas, Pivot Tables), SQL (assumed), Financial Data Systems
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="glass-card p-6">
+                            <h3 class="text-xl font-bold heading-font mb-2">🔹 Web Administrator & Data Analyst — Ankh Research & Discovery</h3>
+                            <p class="text-accent font-medium mb-2">Oct 2025 – Present • Kumasi, Ghana</p>
+                            <p class="text-white/80 mb-4">
+                                <strong>Role Overview:</strong> Led development of web-based systems and dashboards for research analytics, focusing on data accessibility, visualization, and system reliability.
+                            </p>
+                            <div class="mb-4">
+                                <strong>Core Responsibilities:</strong>
+                                <ul class="list-disc list-inside text-white/80 space-y-1 mt-2">
+                                    <li>Designed and developed responsive web interfaces using HTML, CSS, JavaScript, WordPress (for CMS-based solutions)</li>
+                                    <li>Built interactive dashboards for research data visualization, KPI tracking, reporting automation</li>
+                                    <li>Integrated backend databases and analytics tools to ensure seamless data flow between systems, improve data accuracy and real-time accessibility</li>
+                                    <li>Collaborated with cross-functional teams (researchers, analysts, developers) to define system requirements, implement analytics features</li>
+                                    <li>Deployed and maintained web applications on secure hosting environments, managed uptime, performance, and security, optimized user experience and interface usability</li>
+                                </ul>
+                            </div>
+                            <p class="text-white/60 text-sm">
+                                <strong>Tools & Technologies:</strong> HTML, CSS, JavaScript, WordPress, SQL, Power BI (for dashboards), Hosting platforms
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="glass-card p-6">
+                            <h3 class="text-xl font-bold heading-font mb-2">🔹 Server Administrator | Business Operations — Con-Imedia Company Limited</h3>
+                            <p class="text-accent font-medium mb-2">Feb 2023 – Dec 2025 • Accra, Ghana</p>
+                            <p class="text-white/80 mb-4">
+                                <strong>Role Overview:</strong> Combined system administration with data-driven business operations to improve performance, efficiency, and service delivery.
+                            </p>
+                            <div class="mb-4">
+                                <strong>Core Responsibilities:</strong>
+                                <ul class="list-disc list-inside text-white/80 space-y-1 mt-2">
+                                    <li>Generated performance analytics reports on system uptime, infrastructure usage, operational efficiency</li>
+                                    <li>Conducted data-driven operational analysis to identify bottlenecks in workflows, recommend process improvements</li>
+                                    <li>Led process optimization initiatives to streamline workflows, improve service delivery timelines</li>
+                                    <li>Monitored and maintained server infrastructure to ensure system stability and reliability, reduce downtime and performance issues</li>
+                                    <li>Produced strategic reports for stakeholders, translated technical data into actionable business insights</li>
+                                </ul>
+                            </div>
+                            <p class="text-white/60 text-sm">
+                                <strong>Tools & Technologies:</strong> Server management tools, Excel, Monitoring systems, Reporting tools
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="glass-card p-6">
+                            <h3 class="text-xl font-bold heading-font mb-2">🔹 Business Developer — Softmasters Company Limited</h3>
+                            <p class="text-accent font-medium mb-2">Nov 2021 – Jan 2023 • Accra, Ghana</p>
+                            <p class="text-white/80 mb-4">
+                                <strong>Role Overview:</strong> Focused on data-driven business strategy, market research, and stakeholder engagement to improve customer acquisition and retention.
+                            </p>
+                            <div class="mb-4">
+                                <strong>Core Responsibilities:</strong>
+                                <ul class="list-disc list-inside text-white/80 space-y-1 mt-2">
+                                    <li>Conducted market research and competitive analysis to identify trends, opportunities, and customer behavior patterns</li>
+                                    <li>Built data-driven business strategies to improve product adoption, optimize customer lifecycle management</li>
+                                    <li>Presented analytical insights to executives to support decision-making processes, influence strategic planning</li>
+                                    <li>Developed and implemented stakeholder engagement frameworks to improve communication with partners and clients</li>
+                                    <li>Analyzed customer onboarding and engagement metrics, recommended improvements to enhance user experience</li>
+                                </ul>
+                            </div>
+                            <p class="text-white/60 text-sm">
+                                <strong>Tools & Technologies:</strong> Excel, CRM systems, Data analysis tools, Presentation tools
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="glass-card p-6">
+                            <h3 class="text-xl font-bold heading-font mb-2">🔹 Teaching Assistant — Kwame Nkrumah University of Science and Technology</h3>
+                            <p class="text-accent font-medium mb-2">Sep 2020 – Sep 2021 • Kumasi, Ghana</p>
+                            <p class="text-white/80 mb-4">
+                                <strong>Role Overview:</strong> Supported academic instruction in programming and IT-related courses while developing digital learning resources.
+                            </p>
+                            <div class="mb-4">
+                                <strong>Core Responsibilities:</strong>
+                                <ul class="list-disc list-inside text-white/80 space-y-1 mt-2">
+                                    <li>Delivered tutorial sessions on programming concepts and ethics</li>
+                                    <li>Assisted students in understanding complex technical topics, applying programming methodologies</li>
+                                    <li>Developed digital learning materials and guides to improve student engagement, enhance comprehension of course content</li>
+                                    <li>Provided mentorship and academic support, guided students through assignments and projects</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center text-white/60">
+                <p>&copy; <span id="currentYear"></span> Pascal DeSouza. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const hamburger = document.getElementById('hamburger');
+            menu.classList.toggle('hidden');
+            hamburger.classList.toggle('fa-bars');
+            hamburger.classList.toggle('fa-x');
+        }
+
+        // CV download with animation
+        function downloadCV() {
+            const link = document.createElement('a');
+            link.href = 'DeSouza Pascal.pdf';
+            link.download = 'Pascal-DeSouza-CV.pdf';
+            link.click();
+
+            // Success animation
+            const notification = document.createElement('div');
+            notification.innerHTML = `
+                <div class="fixed top-4 right-4 glass-card p-4 rounded-lg z-50 animate-bounce">
+                    <div class="flex items-center space-x-2 text-green-400">
+                        <i class="fas fa-check-circle"></i>
+                        <span>CV Downloaded Successfully!</span>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(notification);
+            setTimeout(() => notification.remove(), 3000);
+        }
+
+        // Initialize
+        window.addEventListener('load', () => {
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            console.log('🚀 About page loaded successfully!');
+        });
+
+        const customCursor = document.getElementById('customCursor');
+        window.addEventListener('mousemove', (event) => {
+            customCursor.style.left = `${event.clientX}px`;
+            customCursor.style.top = `${event.clientY}px`;
+        });
+        window.addEventListener('mousedown', () => {
+            customCursor.classList.add('active');
+        });
+        window.addEventListener('mouseup', () => {
+            customCursor.classList.remove('active');
+        });
+        window.addEventListener('mouseleave', () => {
+            customCursor.style.opacity = '0';
+        });
+        window.addEventListener('mouseenter', () => {
+            customCursor.style.opacity = '1';
+        });
+    </script>
+    <script src="portfolio-motion.js"></script>
+</body>
+</html>
